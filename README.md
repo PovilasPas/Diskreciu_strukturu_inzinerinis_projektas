@@ -1,0 +1,1 @@
+# Diskreciu_strukturu_inzinerinis_projektas
