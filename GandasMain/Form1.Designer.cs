@@ -36,6 +36,7 @@ namespace GandasMain
             this.Execute = new System.Windows.Forms.Button();
             this.Previous = new System.Windows.Forms.Button();
             this.Next = new System.Windows.Forms.Button();
+            this.Steps = new System.Windows.Forms.RichTextBox();
             this.SuspendLayout();
             // 
             // GView
@@ -46,7 +47,7 @@ namespace GandasMain
             this.GView.BackwardEnabled = false;
             this.GView.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.GView.BuildHitTree = true;
-            this.GView.CurrentLayoutMethod = Microsoft.Msagl.GraphViewerGdi.LayoutMethod.MDS;
+            this.GView.CurrentLayoutMethod = Microsoft.Msagl.GraphViewerGdi.LayoutMethod.SugiyamaScheme;
             this.GView.Dock = System.Windows.Forms.DockStyle.Left;
             this.GView.EdgeInsertButtonVisible = false;
             this.GView.FileName = "";
@@ -138,11 +139,23 @@ namespace GandasMain
             this.Next.UseVisualStyleBackColor = true;
             this.Next.Click += new System.EventHandler(this.Next_Click);
             // 
+            // Steps
+            // 
+            this.Steps.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.Steps.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(186)));
+            this.Steps.Location = new System.Drawing.Point(1006, 370);
+            this.Steps.Name = "Steps";
+            this.Steps.ReadOnly = true;
+            this.Steps.Size = new System.Drawing.Size(464, 519);
+            this.Steps.TabIndex = 6;
+            this.Steps.Text = "";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(120F, 120F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.ClientSize = new System.Drawing.Size(1482, 953);
+            this.Controls.Add(this.Steps);
             this.Controls.Add(this.Next);
             this.Controls.Add(this.Previous);
             this.Controls.Add(this.Execute);
@@ -165,6 +178,7 @@ namespace GandasMain
         private System.Windows.Forms.Button Execute;
         private System.Windows.Forms.Button Previous;
         private System.Windows.Forms.Button Next;
+        private System.Windows.Forms.RichTextBox Steps;
     }
 }
 

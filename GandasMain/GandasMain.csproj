@@ -55,6 +55,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="App_code\GraphInfo.cs" />
     <Compile Include="App_code\GraphSolver.cs" />
     <Compile Include="App_code\InOut.cs" />
     <Compile Include="App_code\Path.cs" />

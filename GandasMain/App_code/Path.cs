@@ -24,40 +24,37 @@ namespace GandasMain
                 return Edges.Count;
             }
         }
-        public int Steps { get; private set; }
-        public Path(Path path, int steps)
+        private List<int> History;
+        public int Steps
         {
-            Vertices = new List<int>();
-            Edges = new List<SimpleEdge>();
-            Steps = steps;
-            for (int i = 0; i < path.Vertices.Count; i++)
+            get
             {
-                Vertices.Add(path.GetVertex(i));
-            }
-            for (int i = 0; i < path.Edges.Count; i++)
-            {
-                Edges.Add(path.GetEdge(i));
+                return History.Count;
             }
         }
         public Path(Path path)
         {
             Vertices = new List<int>();
             Edges = new List<SimpleEdge>();
-            Steps = 0;
+            History = new List<int>();
             for (int i = 0; i < path.Vertices.Count; i++)
             {
-                Vertices.Add(path.GetVertex(i));
+                Vertices.Add(path.Vertices[i]);
             }
             for (int i = 0; i < path.Edges.Count; i++)
             {
-                Edges.Add(path.GetEdge(i));
+                Edges.Add(path.Edges[i]);
+            }
+            for(int i = 0; i < path.History.Count; i++)
+            {
+                History.Add(path.History[i]);
             }
         }
         public Path()
         {
             Vertices = new List<int>();
             Edges = new List<SimpleEdge>();
-            Steps = 0;
+            History = new List<int>();
         }
         public bool ContainsVertex(int element)
         {
@@ -79,9 +76,12 @@ namespace GandasMain
         {
             return Vertices[index];
         }
+        public int GetHistory(int index)
+        {
+            return History[index];
+        }
         public void AppendPath(Path other)
         {
-            Steps++;
             for (int i = 0; i < other.VerticesCount; i++)
             {
                 Vertices.Add(other.GetVertex(i));
@@ -90,6 +90,7 @@ namespace GandasMain
             {
                 Edges.Add(other.GetEdge(i));
             }
+            History.Add(Edges.Count);
         }
     }
 }

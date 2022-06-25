@@ -18,7 +18,7 @@ namespace GandasMain
         const string Dfv = "../../App_data/Grafas.txt";
         private GraphSolver Solver;
         private int StartPoint;
-        private List<Graph> SolutionGraphs;
+        private List<GraphInfo> SolutionGraphs;
         private int CurrentGraph;
         public Form1()
         {
@@ -77,9 +77,10 @@ namespace GandasMain
             {
                 StartPoint = 0;
                 CurrentGraph = 0;
-                SolutionGraphs = new List<Graph>();
+                SolutionGraphs = new List<GraphInfo>();
                 Previous.Enabled = false;
                 Next.Enabled = false;
+                Steps.Text = "";
             }
         }
 
@@ -108,7 +109,8 @@ namespace GandasMain
             SVertices.Items.Clear();
             SVertices.Items.Add(StartPoint);
             SolutionGraphs = Solver.SpreadRumors(StartPoint);
-            GView.Graph = SolutionGraphs[CurrentGraph];
+            GView.Graph = SolutionGraphs[CurrentGraph].solution;
+            Steps.Text = SolutionGraphs[CurrentGraph].steps;
             Execute.Enabled = false;
             SVertices.Enabled = false;
             Read.Enabled = true;
@@ -123,7 +125,8 @@ namespace GandasMain
             if(CurrentGraph - 1 >= 0)
             {
                 CurrentGraph--;
-                GView.Graph = SolutionGraphs[CurrentGraph];
+                GView.Graph = SolutionGraphs[CurrentGraph].solution;
+                Steps.Text = SolutionGraphs[CurrentGraph].steps;
                 Next.Enabled = true;
                 if(CurrentGraph - 1 < 0)
                 {
@@ -137,7 +140,8 @@ namespace GandasMain
             if(CurrentGraph + 1 < SolutionGraphs.Count)
             {
                 CurrentGraph++;
-                GView.Graph = SolutionGraphs[CurrentGraph];
+                GView.Graph = SolutionGraphs[CurrentGraph].solution;
+                Steps.Text = SolutionGraphs[CurrentGraph].steps;
                 Previous.Enabled = true;
                 if(CurrentGraph + 1 >= SolutionGraphs.Count)
                 {

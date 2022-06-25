@@ -10,12 +10,10 @@ namespace GandasMain
     {
         public int SourceNode { get; set; }
         public int TargetNode { get; set; }
-        public int Depth { get; set; }
-        public SimpleEdge(int S, int T, int D)
+        public SimpleEdge(int S, int T)
         {
             SourceNode = S;
             TargetNode = T;
-            Depth = D;
         }
     }
 }
